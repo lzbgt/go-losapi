@@ -1,0 +1,1 @@
+Res.exe push ../html/Manifest.json

@@ -1,0 +1,1 @@
+Res.exe -cfg cfg.json push ../html/Manifest.json

@@ -1,0 +1,1 @@
+Res.exe -cfg cfg.json -appname Demo -ver 22 clear

@@ -1,0 +1,1 @@
+Res.exe -cfg cfg.json -name LeitherApi -ver 12 clear

@@ -1,0 +1,14 @@
+{
+    "AppName":"Demo",
+    "ResFile":[
+        "js/jquery.min.js","js/angular.min.js", "js/angular-ui-router.min.js",
+        "js/ui-bootstrap-tpls.js","js/angular-sanitize.js","app.js"],
+    "ResName":[
+        "jquery", "angular", "angular-ui-router","bootstrap","sanitize","app"
+    ],
+    "Res":{
+        "ID":"M5pB6BlrAvbtz1z6bo52Z05FAu7NIy0NbKhPXxqMltI",
+        "PPT":"",
+        "URL":"http://121.43.154.122:9001"
+    }
+}
