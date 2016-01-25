@@ -26,7 +26,7 @@ import (
 
 // pushCmd represents the push command
 var pushCmd = &cobra.Command{
-	Use:   "push",
+	Use:   "push [ResName ResFile]",
 	Short: "push local resource to LOS node",
 	Long:  `push local resource file to LOS node`,
 	Example: `
@@ -41,32 +41,6 @@ var pushCmd = &cobra.Command{
 	Run: Push,
 }
 
-var pushTmpl string = `Usage:{{if .Runnable}}
-  {{.UseLine}}{{if .HasFlags}} [ResName PathToFileName] [flags]{{end}}{{end}}{{if .HasSubCommands}}
-  {{ .CommandPath}} [command]{{end}}{{if gt .Aliases 0}}
-
-Aliases:
-  {{.NameAndAliases}}
-{{end}}{{if .HasExample}}
-
-Examples:
-{{ .Example }}{{end}}{{ if .HasAvailableSubCommands}}
-
-Available Commands:{{range .Commands}}{{if .IsAvailableCommand}}
-  {{rpad .Name .NamePadding }} {{.Short}}{{end}}{{end}}{{end}}{{ if .HasLocalFlags}}
-
-Flags:
-{{.LocalFlags.FlagUsages | trimRightSpace}}{{end}}{{ if .HasInheritedFlags}}
-
-Global Flags:
-{{.InheritedFlags.FlagUsages | trimRightSpace}}{{end}}{{if .HasHelpSubCommands}}
-
-Additional help topics:{{range .Commands}}{{if .IsHelpCommand}}
-  {{rpad .CommandPath .CommandPathPadding}} {{.Short}}{{end}}{{end}}{{end}}{{ if .HasSubCommands }}
-
-Use "{{.CommandPath}} [command] --help" for more information about a command.{{end}}
-`
-
 func init() {
 	RootCmd.AddCommand(pushCmd)
 
@@ -79,7 +53,6 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	//pushCmd.Flags().StringVarP(&ver, "version", "v", "0", "version number")
-	pushCmd.SetUsageTemplate(pushTmpl)
 
 }
 
@@ -138,8 +111,6 @@ func Push(cmd *cobra.Command, args []string) {
 	}
 
 	//fmt.Println("verbose: ", verbose)
-
-	var info pub.LoginInfo
 	stub, err := pub.GetStubAndLoginFromCfg(cfg, &info)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "failed to login", err.Error())

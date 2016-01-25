@@ -15,10 +15,11 @@
 package main
 
 import "lzbgt/go-losapi/ResNew/cmd"
-import "github.com/spf13/cobra/doc"
+
+//import "github.com/spf13/cobra/doc"
 
 func main() {
 
-	doc.GenMarkdownTree(cmd.RootCmd, "./tmp")
-	//cmd.Execute()
+	//doc.GenMarkdownTree(cmd.RootCmd, "./tmp")
+	cmd.Execute()
 }

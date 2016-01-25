@@ -16,6 +16,7 @@ package cmd
 
 import (
 	"fmt"
+	"lzbgt/go-losapi/pub"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -25,6 +26,8 @@ import (
 var cfgFile string
 var cfg string
 var verbose bool
+
+var info pub.LoginInfo
 
 // This represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{

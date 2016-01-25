@@ -62,7 +62,6 @@ func Show(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	var info pub.LoginInfo
 	stub, err := pub.GetStubAndLoginFromCfg(cfg, &info)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "failed to Login\n", "error:", err.Error())

@@ -24,6 +24,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const (
+	API_REGAPP = "http://api.leither.cn:8890/v1/res/regapp"
+)
+
 var relRes bool
 
 // releaseCmd represents the release command
@@ -84,7 +88,6 @@ func Release(cmd *cobra.Command, args []string) {
 	}
 
 	err = nil
-	var info pub.LoginInfo
 	stub, err := pub.GetStubAndLoginFromCfg(cfg, &info)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
@@ -93,6 +96,7 @@ func Release(cmd *cobra.Command, args []string) {
 
 	if !relRes {
 		err = ReleaseManifest(stub, info.ID, res, v)
+
 	} else {
 		err = ReleaseRes(stub, info.ID, res, v)
 	}
@@ -116,5 +120,6 @@ func ReleaseRes(stub *pub.WebApiStub, id, resName string, ver int) error {
 	}
 
 	fmt.Printf("released res \"%s\" version %d \r\n", resName, ver)
+
 	return nil
 }
